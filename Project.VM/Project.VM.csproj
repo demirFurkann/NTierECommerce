@@ -42,6 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PureVMs\AdminCategoryVM.cs" />
+    <Compile Include="PureVMs\AdminProductVM.cs" />
+    <Compile Include="PureVMs\AppUserProfileVM.cs" />
+    <Compile Include="PureVMs\AppUserVM.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
