@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\AdminScripts\AdminCategoryDTJ.js" />
+    <Content Include="Areas\Admin\AdminScripts\AdminProductDTJ.js" />
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="OuterTools\404.html" />
@@ -1713,8 +1714,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Data\AdminPageVMs\AdminAddUpdateCategoryPageVM.cs" />
+    <Compile Include="Areas\Admin\Data\AdminPageVMs\AdminAddUpdateProductPageVM.cs" />
     <Compile Include="Areas\Admin\Data\AdminPageVMs\AdminCategoryListPageVM.cs" />
+    <Compile Include="Areas\Admin\Data\AdminPageVMs\AdminProductListPageVM.cs" />
     <Compile Include="AuthenticationClasses\AdminAuthentication.cs" />
     <Compile Include="AuthenticationClasses\MemberAuthentication.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -1722,6 +1726,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomTools\ImageUploader.cs" />
     <Compile Include="Models\PageVMs\RegisterNowPageVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1934,6 +1939,7 @@
     <Content Include="Areas\Admin\Views\Category\ListCategories.cshtml" />
     <Content Include="Areas\Admin\Views\Category\AddCategory.cshtml" />
     <Content Include="Areas\Admin\Views\Category\UpdateCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\ListProducts.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -1951,6 +1957,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="OuterTools\assets\jquery-file-upload\server\php\files\thumbnail\" />
+    <Folder Include="Pictures\" />
     <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
