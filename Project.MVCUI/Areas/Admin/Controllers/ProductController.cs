@@ -103,6 +103,7 @@ namespace Project.MVCUI.Areas.Admin.Controllers
 			};
 			return View(apvm);
 		}
+		[HttpPost]
 
 		public ActionResult UpdateProduct(AdminProductVM product)
 		{

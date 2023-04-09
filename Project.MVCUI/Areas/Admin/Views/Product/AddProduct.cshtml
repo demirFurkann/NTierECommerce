@@ -1,0 +1,80 @@
+﻿@model AdminAddUpdateProductPageVM
+@{
+    ViewBag.Title = "AddProduct";
+}
+
+<h2>AddProduct</h2>
+
+<style>
+    .genislik {
+        width: 300px;
+    }
+</style>
+
+@using (Html.BeginForm("AddProduct", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-sm-12">
+
+            <section class="panel">
+                <header class="panel-heading">
+                    Ürün Ekleme Sayfası
+                </header>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-2"> Ürün İsmi</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Product.ProductName, new { @class = "form-control-genislik" })
+                        </div>
+                    </div>
+
+                    <br /> <br />
+                    <div class="form-group">
+                        <label class="col-sm-2">Ürün Fiyati</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Product.UnitPrice, new { @class = "form-control-genislik" })
+                        </div>
+                    </div>
+                    <br /> <br />
+                    <div class="form-group">
+                        <label class="col-sm-2">Stok</label>
+                        <div class="col-sm-10">
+                            @Html.TextBoxFor(x => x.Product.UnitsInStock, new { @class = "form-control-genislik" })
+                        </div>
+                    </div>
+                    <br /> <br />
+                    <div class="form-group">
+                        <label class="col-sm-2">Kategorisi </label>
+                        <div class="col-sm-10">
+                            @Html.DropDownListFor(x => x.Product.CategoryID, new SelectList(Model.Categories, "ID", "CategoryName"), "Lütfen Seçiniz", new { @class = "form-control-genislik" })
+                        </div>
+                    </div>
+                    <br /> <br />
+
+                    <div class="form-group">
+                        <label class=" col-sm-2"> Resim Seçiniz </label>
+                        <div class="col-sm-10">
+
+                            <input type="file" name="image" class="form-control genislik" />
+                            <br />
+                            @Html.TextBox("fileName", null, new { @class = "form-control genislik", placeholder = "Resim İsmi Giriniz" })
+                        </div>
+
+                    </div>
+                    <br /> <br />
+
+                    <div class="form-group">
+                        <label class="col-sm-2">İşlem:</label>
+                        <div class="col-sm-10">
+                            <button class="btn btn-primary">Ekle</button>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+}
+
