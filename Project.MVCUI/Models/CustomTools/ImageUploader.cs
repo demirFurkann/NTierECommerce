@@ -23,7 +23,7 @@ namespace Project.MVCUI.Models.CustomTools
 
 				if(extension == "jpg" || extension == "jpeg" || extension == "gif" || extension == "png")
 				{
-					if (File.Exists(HttpContext.Current.Server.MapPath(fileName+serverPath)))
+					if (File.Exists(HttpContext.Current.Server.MapPath(serverPath + fileName)))
 					{
 						return "1";
 					}
@@ -40,6 +40,14 @@ namespace Project.MVCUI.Models.CustomTools
 				}
 			}
 			return "3";
+		}
+
+		public static void DeleteImage(string imagePath)
+		{
+			if(File.Exists(imagePath))
+			{
+				File.Delete(imagePath);
+			}
 		}
 	}
 }

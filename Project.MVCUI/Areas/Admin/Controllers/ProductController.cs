@@ -5,6 +5,7 @@ using Project.MVCUI.Models.CustomTools;
 using Project.VM.PureVMs;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -41,7 +42,9 @@ namespace Project.MVCUI.Areas.Admin.Controllers
 				ProductName = x.ProductName,
 				UnitPrice = x.UnitPrice,
 				UnitsInStock = x.UnitsInStock,
-				CategoryName = x.Category.CategoryName
+				CategoryName = x.Category.CategoryName,
+				Status = x.Status.ToString()
+				
 			}).ToList();
 		}
 
@@ -77,9 +80,9 @@ namespace Project.MVCUI.Areas.Admin.Controllers
 				UnitPrice = product.UnitPrice,
 				UnitsInStock = product.UnitsInStock,
 				CategoryID = product.CategoryID,
-				ImagePath = product.ImagePath,
-			};
-			p.ImagePath = ImageUploader.UploadImage("/Pictures/",image, fileName);
+				ImagePath = product.ImagePath= ImageUploader.UploadImage("/Pictures/", image, fileName)
+        };
+			
 
 			_pRep.Add(p);
 			return RedirectToAction("ListProducts");
@@ -105,7 +108,7 @@ namespace Project.MVCUI.Areas.Admin.Controllers
 		}
 		[HttpPost]
 
-		public ActionResult UpdateProduct(AdminProductVM product)
+		public ActionResult UpdateProduct(AdminProductVM product,HttpPostedFileBase image,string fileName,string removeImage)
 		{
 			Product toBeUpdated = _pRep.Find(product.ID);
 			toBeUpdated.ProductName = product.ProductName;
@@ -113,6 +116,32 @@ namespace Project.MVCUI.Areas.Admin.Controllers
 			toBeUpdated.UnitsInStock = product.UnitsInStock;
 			toBeUpdated.CategoryID = product.CategoryID;
 			toBeUpdated.ImagePath = product.ImagePath;
+
+
+			if (toBeUpdated == null)
+			{
+				toBeUpdated.ImagePath = ImageUploader.UploadImage("/Pictures/", image, fileName);
+			}
+
+
+
+			//if(image != null)
+			//{
+			//	if (product.ImagePath!=null)
+			//	{
+			//		ImageUploader.DeleteImage(product.ImagePath);
+			//	}
+			//	string imagePath = ImageUploader.UploadImage("/Pictures/", image, fileName);
+			//	product.ImagePath = imagePath;
+			//}
+			//else if (removeImage !=null)
+			//{
+			//	if (product.ImagePath != null)
+			//	{
+			//		ImageUploader.DeleteImage(product.ImagePath);
+			//		product.ImagePath = null;
+			//	}
+			//}
 
 
 			_pRep.Update(toBeUpdated);

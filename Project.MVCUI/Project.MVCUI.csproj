@@ -1708,6 +1708,7 @@
     <Content Include="OuterTools\todo_list.html" />
     <Content Include="OuterTools\widget.html" />
     <Content Include="OuterTools\xchart.html" />
+    <Content Include="Pictures\gg.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1959,7 +1960,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="OuterTools\assets\jquery-file-upload\server\php\files\thumbnail\" />
-    <Folder Include="Pictures\" />
     <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
