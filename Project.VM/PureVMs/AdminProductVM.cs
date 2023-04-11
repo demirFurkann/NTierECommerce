@@ -16,7 +16,7 @@ namespace Project.VM.PureVMs
 		public string CategoryName { get; set; }
 		public string ImagePath { get; set; }
 
-		public bool DeleteImage { get; set; }
+		//public bool DeleteImage { get; set; }
 
 		public string Status { get; set; }
 

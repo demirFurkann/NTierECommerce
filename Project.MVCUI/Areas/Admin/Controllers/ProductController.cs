@@ -43,6 +43,7 @@ namespace Project.MVCUI.Areas.Admin.Controllers
 				UnitPrice = x.UnitPrice,
 				UnitsInStock = x.UnitsInStock,
 				CategoryName = x.Category.CategoryName,
+				
 				Status = x.Status.ToString()
 				
 			}).ToList();

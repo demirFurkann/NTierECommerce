@@ -2,7 +2,11 @@
 @{
     ViewBag.Title = "ListProducts";
 }
-<script src="~/Areas/Admin/AdminScripts/AdminProductDTJ.js"></script>
+
+<script src="~/OuterTools/js/bootstrap.js"></script>
+<script src="~/OuterTools/js/jquery.js"></script>
+<link href="~/OuterTools/css/bootstrap.css" rel="stylesheet" />
+
 
 <header class="panel-heading">
     @Html.ActionLink("Ürün Ekle", "AddProduct", null, new { @class = "btn btn-primary" })
@@ -50,7 +54,7 @@
                             <img width="30" height="30" title="@item.ProductName" src="@item.ImagePath" />
 
                         </td>
-                      <td>@item.Status</td>
+                        <td>@item.Status</td>
                         <td class="center hidden-phone">@Html.ActionLink("Sil", "DeleteProduct", new { id = item.ID }, new { @class = "btn btn-danger" })</td>
                         <td class="center hidden-phone">@Html.ActionLink("Güncelle", "UpdateProduct", new { id = item.ID }, new { @class = "btn btn-warning" })</td>
 
@@ -63,3 +67,4 @@
     </div>
 </div>
 
+<script src="~/Areas/Admin/AdminScripts/AdminProductDTJ.js"></script>
