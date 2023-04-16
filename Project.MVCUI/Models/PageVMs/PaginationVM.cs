@@ -8,7 +8,7 @@ using System.Web;
 using PagedList.Mvc;
 
 
-namespace Project.MVCUI.Models.ShoppingTools
+namespace Project.MVCUI.Models.PageVMs
 {
     public class PaginationVM
     {
