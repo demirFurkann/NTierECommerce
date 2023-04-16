@@ -119,37 +119,19 @@ namespace Project.MVCUI.Areas.Admin.Controllers
             toBeUpdated.UnitPrice = product.UnitPrice;
             toBeUpdated.UnitsInStock = product.UnitsInStock;
             toBeUpdated.CategoryID = product.CategoryID;
-            toBeUpdated.ImagePath = product.ImagePath;
-
-
-            if (toBeUpdated == null)
-            {
-                toBeUpdated.ImagePath = ImageUploader.UploadImage("/Pictures/", image, fileName);
-            }
-
-
-
-            //if (image != null)
-            //{
-            //	if (product.ImagePath != null)
-            //	{
-            //		ImageUploader.DeleteImage(product.ImagePath);
-            //	}
-            //	string imagePath = ImageUploader.UploadImage("/Pictures/", image, fileName);
-            //	product.ImagePath = imagePath;
-            //}
-            //else if (removeImage != null)
-            //{
-            //	if (product.ImagePath != null)
-            //	{
-            //		ImageUploader.DeleteImage(product.ImagePath);
-            //		product.ImagePath = null;
-            //	}
-            //}
+            toBeUpdated.ImagePath = product.ImagePath = ImageUploader.UploadImage("/Pictures", image, fileName);
 
 
             _pRep.Update(toBeUpdated);
             return RedirectToAction("ListProducts");
+        }
+
+
+        [HttpPost]
+        public ActionResult DeleteImage(string ImagePath)
+        {
+            bool result = ImageUploader.DeleteImage(ImagePath);
+            return Json(result);
         }
 
         public ActionResult DeleteProduct(int id)

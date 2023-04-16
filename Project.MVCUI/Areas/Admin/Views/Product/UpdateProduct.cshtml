@@ -53,9 +53,9 @@
                         </div>
                     </div>
 
-           
-           
-                
+
+
+
 
 
 
@@ -66,7 +66,7 @@
                         <div class="col-sm-10">
 
                             <input type="file" name="image" class="form-control genislik" />
-                            
+
 
                             <br />
                             @Html.TextBox("fileName", null, new { @class = "form-control genislik", placeholder = "Resim İsmi Giriniz" })
@@ -74,20 +74,51 @@
 
                     </div>
                     <br /> <br />
-
                     <div class="form-group">
-                        <label class="col-sm-2">İşlem:</label>
+                        <label class=" col-sm-2"> Görsel Silme </label>
                         <div class="col-sm-10">
-                            <button class="btn btn-primary">Ekle</button>
+
+                            <br />
+                            <button class="btn btn-warning" onclick="deleteImage('/Pictures/MyImage/.jpg')">Görseli sil</button>
+                        </div>
+                        <br /> <br />
+                        
 
 
+                        <div class="form-group">
+                            <label class="col-sm-2">İşlem:</label>
+                            <div class="col-sm-10">
+                                <button class="btn btn-primary">Ekle</button>
+
+
+                            </div>
                         </div>
                     </div>
-                </div>
 
-            </section>
+</section>
         </div>
     </div>
 
           }
 
+<script>
+    function deleteImage(imagePath) {
+        $.ajax({
+            type: "POST",
+            url: "/DeleteImage",
+            data: { imagePath: imagePath },
+            success: function (result) {
+                if (result) {
+                    // Görsel başarıyla silindi
+                }
+                else {
+                   
+                }
+            },
+            error: function () {
+                
+            }
+        });
+    }
+
+</script>

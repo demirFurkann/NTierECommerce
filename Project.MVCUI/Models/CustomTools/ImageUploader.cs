@@ -4,6 +4,7 @@ using System.Data.Entity.Infrastructure;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.DynamicData;
 
 namespace Project.MVCUI.Models.CustomTools
 {
@@ -50,5 +51,20 @@ namespace Project.MVCUI.Models.CustomTools
                 return "3"; //Dosya bos kodu
             }
         }
+
+        public static bool DeleteImage(string imagePath)
+        {
+            if (File.Exists(HttpContext.Current.Server.MapPath(imagePath)))
+            {
+                File.Delete(HttpContext.Current.Server.MapPath(imagePath));
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+
     }
 }
