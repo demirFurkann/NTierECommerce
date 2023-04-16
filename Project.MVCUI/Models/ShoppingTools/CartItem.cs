@@ -24,5 +24,9 @@ namespace Project.MVCUI.Models.ShoppingTools
                 return Amount * Price;
             }
         }
+        public CartItem()
+        {
+            Amount++;
+        }
     }
 }

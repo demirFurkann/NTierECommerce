@@ -38,19 +38,24 @@ namespace Project.MVCUI.Controllers
                 ProductName = x.ProductName,
                 UnitPrice = x.UnitPrice,
                 UnitsInStock = x.UnitsInStock,
-                CategoryName = x.Category.CategoryName,
+                CategoryName = x.Category != null ? x.Category.CategoryName : "",
                 ImagePath = x.ImagePath,
+                Status = x.Status.ToString(),
+
             }).ToPagedList(page ?? 1, 9) : _prodRep.Where(x => x.CategoryID == categoryID && x.Status != ENTITIES.Enums.DataStatus.Deleted).Select(x => new ProductVM
             {
                 ID = x.ID,
                 ProductName = x.ProductName,
                 UnitPrice = x.UnitPrice,
                 UnitsInStock = x.UnitsInStock,
-                CategoryName = x.Category.CategoryName,
+                CategoryName = x.Category  != null ? x.Category.CategoryName : "",
                 ImagePath = x.ImagePath,
-                CategoryID = x.CategoryID
+                CategoryID = x.CategoryID,
+                Status = x.Status.ToString(),
+
 
             }).ToPagedList(page ?? 1, 9);
+
             PaginationVM pavm = new PaginationVM
             {
                 PagedProducts = products,
@@ -62,6 +67,7 @@ namespace Project.MVCUI.Controllers
                     Description = x.Description,
                 }).ToList()
             };
+        
 
             if (categoryID != null)
             {
@@ -87,7 +93,10 @@ namespace Project.MVCUI.Controllers
 
             c.SepeteEkle(ci);
             Session["scart"] = c;
-            return RedirectToAction("ShoppingList");
+
+            //return RedirectToAction("ShoppingList");
+            return Redirect(Request.UrlReferrer.ToString());
+
         }
 
         public ActionResult CartPage()

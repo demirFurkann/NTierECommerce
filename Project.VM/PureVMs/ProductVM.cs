@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Project.VM.PureVMs
 {
-	public class ProductVM
-	{
+    public class ProductVM
+    {
 
         public int ID { get; set; }
         public string ProductName { get; set; }

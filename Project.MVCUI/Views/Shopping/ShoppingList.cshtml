@@ -3,7 +3,12 @@
     ViewBag.Title = "ShoppingList";
 }
 
-<h2 style="background-color:maroon">@TempData["sepetBos"]</h2>
+
+
+
+<h2 style="background-color:red">@TempData["sepetBos"]</h2>
+
+
 <section class="wrapper">
     <!-- page start-->
     <div class="row">
@@ -55,8 +60,8 @@
             </section>
 
             <div class="row product-list">
-                
 
+                
                 @foreach (ProductVM item in Model.PagedProducts)
                 {
 
@@ -66,7 +71,7 @@
 
                                 @if (item.ImagePath == null || item.ImagePath == "3" || item.ImagePath == "2" || item.ImagePath.Contains("nightlife"))
                                 {
-                                    <img src="~/Pictures/gg.jpg"alt="Resim yok" width="100" height="300" title="@item.ProductName" />
+                                    <img src="~/Pictures/gg.jpg" alt="Resim yok" width="100" height="300" title="@item.ProductName" />
                                 }
                                 else
                                 {
@@ -74,7 +79,7 @@
                                 }
                                 @*
 
-                        Url.Action'in bize verdigi fayda,asagıdaki gibi belli durumlarda ActionLink kullanmak tasarımımıza uygun olmayabilir...
+                                    Url.Action'in bize verdigi fayda,asagıdaki gibi belli durumlarda ActionLink kullanmak tasarımımıza uygun olmayabilir...
 
 
                                 *@
@@ -104,6 +109,7 @@
     </div>
     <!-- page end-->
 </section>
+
 @section Sepet{
 
     <li>
@@ -111,5 +117,3 @@
     </li>
 
 }
-
-

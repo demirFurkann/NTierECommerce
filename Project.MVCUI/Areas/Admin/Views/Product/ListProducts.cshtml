@@ -3,26 +3,22 @@
     ViewBag.Title = "ListProducts";
 }
 
-<script src="~/OuterTools/js/bootstrap.js"></script>
-<script src="~/OuterTools/js/jquery.js"></script>
-<link href="~/OuterTools/css/bootstrap.css" rel="stylesheet" />
-
-
 <header class="panel-heading">
-    @Html.ActionLink("Ürün Ekle", "AddProduct", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("ürün ekle", "AddProduct", null, new { @class = "btn btn-primary" })
 </header>
+
 <div class="panel-body">
     <div class="adv-table">
         <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
             <thead>
                 <tr>
-                    <th>Urun ID</th>
-                    <th>Urun İsmi</th>
-                    <th class="hidden-phone">Urun Fiyatı</th>
-                    <th class="hidden-phone">Urun Stok</th>
-                    <th class="hidden-phone">Urun Kategorisi</th>
-                    <th class="hidden-phone">Urun Resmi</th>
-                    <th class="hidden-phone">Urun Durum</th>
+                    <th>Ürün ID</th>
+                    <th>Ürün Ismi</th>
+                    <th class="hidden-phone">Ürün Fiyatı</th>
+                    <th class="hidden-phone">Ürün Stok</th>
+                    <th class="hidden-phone">Ürün Kategorisi</th>
+                    <th class="hidden-phone">Ürün Resmi</th>
+                    <th class="hidden-phone">Ürün Durumu</th>
 
                     <th class="hidden-phone">Sil</th>
                     <th class="hidden-phone">Güncelle</th>
@@ -35,36 +31,46 @@
                     <tr class="gradeX">
 
 
+
+
                         <td>@item.ID</td>
                         <td>@item.ProductName</td>
                         <td class="hidden-phone">@item.UnitPrice</td>
-                        <td class="hidden-phone">@item.UnitsInStock</td>
+                        <td class="center hidden-phone">@item.UnitsInStock</td>
 
                         @if (item.CategoryName == null)
                         {
-                            <td> Kategorisi Belirtilmemiştir</td>
+                            <td>Kategorisi belirtilmemiş</td>
                         }
                         else
                         {
-                            <td class="center hidden-phone"> @item.CategoryName</td>
+                            <td class="center hidden-phone">@item.CategoryName</td>
                         }
+
+
+
 
                         <td class="center hidden-phone">
 
                             <img width="30" height="30" title="@item.ProductName" src="@item.ImagePath" />
 
+
                         </td>
-                        <td>@item.Status</td>
-                        <td class="center hidden-phone">@Html.ActionLink("Sil", "DeleteProduct", new { id = item.ID }, new { @class = "btn btn-danger" })</td>
+                        <td>@item.Status </td>
+
+                        <td class="center hidden-phone"> @Html.ActionLink("Sil", "DeleteProduct", new { id = item.ID }, new { @class = "btn btn-danger" })  </td>
                         <td class="center hidden-phone">@Html.ActionLink("Güncelle", "UpdateProduct", new { id = item.ID }, new { @class = "btn btn-warning" })</td>
 
                     </tr>
                 }
 
 
+
+
+
             </tbody>
         </table>
+
     </div>
 </div>
-
 <script src="~/Areas/Admin/AdminScripts/AdminProductDTJ.js"></script>
