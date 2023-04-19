@@ -200,7 +200,9 @@ namespace Project.MVCUI.Controllers
                         _prodRep.Update(stoktanDusurulecek);
 
                         //Algoritma  Ödevi : Eger stoktan düsürüldügünde stokta kalmayacak bir şekilde item varsa onun Amount'ı Sepette asılamayacak bir hale gelsin
+                     
                     }
+                   
 
                     TempData["odeme"] = "Siparişiniz bize ulasmıstır...Tesekkür ederiz";
 
