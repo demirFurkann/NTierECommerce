@@ -7,7 +7,7 @@
 
 
 <h2 style="background-color:red">@TempData["sepetBos"]</h2>
-
+@TempData["outOfStockMessage"]
 @TempData["baglantiRed"]
 @TempData["odeme"]
 @TempData["sorun"]
@@ -63,7 +63,7 @@
 
             <div class="row product-list">
 
-                
+
                 @foreach (ProductVM item in Model.PagedProducts)
                 {
 
@@ -119,3 +119,6 @@
     </li>
 
 }
+<div id="uyari" style="display: none;">Ürün stokta yok!</div>
+
+

@@ -16,6 +16,7 @@ using System.Web.Management;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Project.COMMON.Tools;
+using System.ComponentModel.DataAnnotations;
 
 namespace Project.MVCUI.Controllers
 {
@@ -80,6 +81,9 @@ namespace Project.MVCUI.Controllers
             return View(pavm);
         }
 
+        [HandleError(View ="Stok Bitti")]
+
+       
         public ActionResult AddToCart(int id)
         {
             Cart c = Session["scart"] == null ? new Cart() : Session["scart"] as Cart;
@@ -93,6 +97,19 @@ namespace Project.MVCUI.Controllers
                 Price = add.UnitPrice,
                 ImagePath = add.ImagePath,
             };
+            foreach (CartItem item in c.Sepetim)
+            {
+                if (add.UnitsInStock - item.Amount <=0)
+                {
+                    TempData["outOfStockMessage"] = "Üzgünüz, Bu ürün üçün stok yeterlı değildir";
+                    return Redirect(Request.UrlReferrer.ToString());
+
+                }
+            }
+        
+          
+         
+           
 
             c.SepeteEkle(ci);
             Session["scart"] = c;
@@ -141,7 +158,7 @@ namespace Project.MVCUI.Controllers
             {
                 currentUser = Session["member"] as AppUser;
             }
-        
+
             return View();
         }
         //http://localhost:58476/api/Payment/ReceivePayment
@@ -197,12 +214,13 @@ namespace Project.MVCUI.Controllers
                         //Stoktan da düsürelim
                         Product stoktanDusurulecek = _prodRep.Find(item.ID);
                         stoktanDusurulecek.UnitsInStock -= item.Amount;
+
                         _prodRep.Update(stoktanDusurulecek);
 
                         //Algoritma  Ödevi : Eger stoktan düsürüldügünde stokta kalmayacak bir şekilde item varsa onun Amount'ı Sepette asılamayacak bir hale gelsin
-                     
+
                     }
-                   
+
 
                     TempData["odeme"] = "Siparişiniz bize ulasmıstır...Tesekkür ederiz";
 
