@@ -12,12 +12,11 @@ namespace Project.BLL.DesignPatterns.SingletonPattern
 		DBTool() { }
 
 		static MyContext _dbInstance;
-
 		public static MyContext DbInstance
 		{
 			get
 			{
-				if(_dbInstance == null)_dbInstance = new MyContext();
+				if( _dbInstance == null )_dbInstance = new MyContext();
 				return _dbInstance;
 			}
 		}

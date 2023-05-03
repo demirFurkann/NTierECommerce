@@ -1,4 +1,4 @@
-﻿using Project.BLL.DesignPatterns.SingletonPattern;
+﻿ using Project.BLL.DesignPatterns.SingletonPattern;
 using Project.BLL.Repositories.IntRep;
 using Project.DAL.Context;
 using Project.ENTITIES.Models;
@@ -127,6 +127,7 @@ namespace Project.BLL.Repositories.BaseRep
 		public void UpdateRange(List<T> list)
 		{
 			foreach(T item in list) Update(item);
+			Save();
 		}
 
 		public List<T> Where(Expression<Func<T, bool>> exp)
